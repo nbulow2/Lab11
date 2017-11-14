@@ -29,7 +29,16 @@ public class Sorting {
      * @return the sorted array, or null on failure
      */
     static int[] bubbleSort(final int[] array) {
-        return null;
+
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] < array[i - 1]) {
+                int temp = array[i];
+                array[i] = array[i - 1];
+                array[i - 1] = temp;
+            }
+        }
+        return array;
+
     }
 
     /**
@@ -39,7 +48,18 @@ public class Sorting {
      * @return the sorted array, or null on failure
      */
     static int[] selectionSort(final int[] array) {
-        return null;
+        for (int i = 0; i < array.length - 1; i++)
+        {
+            int place = i;
+            for (int j = i + 1; j < array.length; j++)
+                if (array[j] < array[place])
+                    place = j;
+
+            int small = array[place];
+            array[place] = array[i];
+            array[i] = small;
+        }
+        return array;
     }
 
     /**
@@ -49,7 +69,21 @@ public class Sorting {
      * @return the sorted array, or null on failure
      */
     static int[] mergeSort(final int[] array) {
-        return null;
+        int mid =array[array.length/2];
+        int end = array[array.length];
+        if (array.length == 1) {
+            return array;
+        } else if (array.length == 2) {
+            //swap if unsorted
+            return array;
+        } else {
+            int[] array1 = array[0..mid];
+            int[] array2 = array[mid+1..end];
+            int[] sorted_array1 = mergeSort(array1);
+            int[] sorted_array2 = mergeSort(array1);
+            int[] sorted_array = merge(sorted_array1, sorted_array2);
+        }
+
     }
 
     /**
